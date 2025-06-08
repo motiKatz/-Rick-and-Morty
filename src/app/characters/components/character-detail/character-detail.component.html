@@ -1,0 +1,38 @@
+<div class="character-card-container">
+  <div class="character-card-header">
+    <span class="character-name">{{ character().name }}</span>
+    <span class="character-gender">({{ character().gender }})</span>
+    <div class="action-icons">
+      <p-button icon="pi pi-pencil" severity="secondary" [rounded]="true" (click)="onEdit()"
+        class="edit-btn"></p-button>
+      <p-button icon="pi pi-trash" severity="secondary" [rounded]="true" (click)="onDelete()"
+        class="delete-btn"></p-button>
+    </div>
+  </div>
+
+  <div class="character-image">
+    <i *ngIf="isFavorite()" class="pi pi-star-fill toggle-favorite-btn" (click)="onToggleFavorite()" style="color: yellow"></i>
+    <i *ngIf="!isFavorite()" class="pi pi-star toggle-favorite-btn" (click)="onToggleFavorite()" style="color: white"></i>
+    <img [src]="character().image" alt="{{ character().name }}" />
+  </div>
+
+  <div class="character-status">
+    <span>Status: {{ character().status }}</span>
+  </div>
+
+  <div *ngIf="character().species" class="character-species">
+    <strong>Species:</strong> {{ character().species }}
+  </div>
+
+  <div *ngIf="character().episode.length > 0" class="character-episodes">
+    <strong>Episodes:</strong>
+    <div class="episodes-container">
+      <div *ngFor="let episodesData of character().episodesData.slice(0, 5)" class="episode-item">
+        {{ episodesData.name }}
+      </div>
+      <div *ngIf="character().episode.length > 7" class="episodes-indicator">
+        +{{ character().episode.length - 5 }} more
+      </div>
+    </div>
+  </div>
+</div>

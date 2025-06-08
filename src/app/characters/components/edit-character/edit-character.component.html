@@ -1,0 +1,80 @@
+<div class="form-container p-d-flex p-jc-center p-ai-center">
+    <div class="p-card p-shadow-4 p-p-4 form-card">
+        <form [formGroup]="characterForm" (ngSubmit)="onSubmit()">
+            
+            <div class="p-fluid p-formgrid p-grid">
+                <div class="p-field p-col-12">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" pInputText formControlName="name" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="status">Status</label>
+                    <p-select
+                        [options]="[{label: 'Alive', value: 'Alive'}, {label: 'Dead', value: 'Dead'}, {label: 'Unknown', value: 'unknown'}]"
+                        formControlName="status">
+                    </p-select>
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="gender">Gender</label>
+                    <p-select
+                        [options]="[{label: 'Male', value: 'Male'}, {label: 'Female', value: 'Female'}, {label: 'Genderless', value: 'Genderless'}, {label: 'Unknown', value: 'unknown'}]"
+                        formControlName="gender">
+                    </p-select>
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="species">Species</label>
+                    <input id="species" type="text" pInputText formControlName="species" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="type">Type</label>
+                    <input id="type" type="text" pInputText formControlName="type" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="image">Image URL</label>
+                    <div class="custom-file-input-container">
+                        <input id="image" type="text" pInputText formControlName="image"
+                            placeholder="Upload an image or paste URL..." readonly />
+
+                        <p-fileupload #fu mode="basic" chooseLabel="📁" chooseIcon="pi pi-upload" name="demo[]"
+                            accept="image/*" maxFileSize="5000000" (onSelect)="fu.upload()" [auto]="true"
+                            [customUpload]="true" (uploadHandler)="onUpload($event)" styleClass="custom-fileupload" />
+                    </div>
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="origin">Origin</label>
+                    <input id="origin" type="text" pInputText formControlName="name" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="location">Location</label>
+                    <input id="location" type="text" pInputText formControlName="name" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="episode">Episode</label>
+                    <input id="episode" type="text" pInputText formControlName="episode" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="created">Created</label>
+                    <input id="created" type="text" pInputText formControlName="created" />
+                </div>
+
+                <div class="p-field p-col-12">
+                    <label for="url">URL</label>
+                    <input id="url" type="text" pInputText formControlName="url" />
+                </div>
+            </div>
+
+            <div class="p-d-flex p-jc-end p-mt-3">
+                <p-button label="Update" type="button" severity="contrast" (click)="onSubmit()" [disabled]="!characterForm.valid"></p-button>
+            </div>
+        </form>
+    </div>
+</div>

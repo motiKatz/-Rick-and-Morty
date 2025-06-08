@@ -1,0 +1,21 @@
+<div class="character-list-container">
+  <header class="character-list-header">
+    <h2>Character List</h2>
+    <p-button label="Add Character" icon="pi pi-plus" severity="contrast" (click)="onAddCharacter()" />
+  </header>
+
+  <input type="text" [formControl]="searchControl" placeholder="Search characters..." class="search-input" />
+  <p-toast position="bottom-center" key="confirm" [baseZIndex]="5000"></p-toast>
+  <p-confirmdialog />
+
+  <div class="character-grid">
+    <div class="character-card-component" *ngFor="let character of characters(); trackBy: trackByCharacterId">
+      <app-character-detail [isFavorite]="isFavorite(character)" [character]="character"
+        (editCharacter)="onEditCharacter($event)" (deleteCharacter)="onDeleteCharacter($event)"
+        (toggleFavorite)="onToggleFavorite($event)"></app-character-detail>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-message">Loading more characters...</div>
+  <div *ngIf="!hasMore" class="no-more-message">No more characters to load.</div>
+</div>
