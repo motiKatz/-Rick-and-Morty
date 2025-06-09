@@ -19,8 +19,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { initFormControl } from 'src/app/shared/functions';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FilesServiceService } from 'src/app/shared/services/files-service.service';
-import { file } from '@rxweb/reactive-form-validators';
-import { from, switchMap } from 'rxjs';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-add-character',
