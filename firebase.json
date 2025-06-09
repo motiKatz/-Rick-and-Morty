@@ -11,7 +11,7 @@
     ]
   },
   "hosting": {
-    "public": "public",
+    "public": "dist/rick-and-morty-app",
     "ignore": [
       "firebase.json",
       "**/.*",
